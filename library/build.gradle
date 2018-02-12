@@ -8,7 +8,7 @@ ext {
 
 //noinspection GroovyMissingReturnStatement
 android {
-    compileSdkVersion 24
+    compileSdkVersion 26
     buildToolsVersion '23.0.3'
 
     lintOptions {
@@ -17,7 +17,7 @@ android {
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 24
+        targetSdkVersion 26
         versionCode 20
         versionName "2.0"
     }
