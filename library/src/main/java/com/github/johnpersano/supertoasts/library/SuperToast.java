@@ -774,7 +774,7 @@ public class SuperToast {
                 | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
         layoutParams.format = PixelFormat.TRANSLUCENT;
         layoutParams.windowAnimations = AnimationUtils.getSystemAnimationsResource(mStyle.animations);
-        layoutParams.type = WindowManager.LayoutParams.TYPE_TOAST;
+        layoutParams.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
         layoutParams.gravity = this.mStyle.gravity;
         layoutParams.x = this.mStyle.xOffset;
         layoutParams.y = this.mStyle.yOffset;
