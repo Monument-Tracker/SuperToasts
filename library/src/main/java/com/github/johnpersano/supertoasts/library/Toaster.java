@@ -180,15 +180,21 @@ class Toaster extends Handler {
 
         // The SuperToast is NOT a SuperActivityToast, show it via the WindowManager
         } else {
-            final WindowManager windowManager = (WindowManager) superToast.getContext()
-                    .getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
-            if (windowManager != null) {
-                windowManager.addView(superToast.getView(), superToast.getWindowManagerParams());
-            }
+            try {
+                final WindowManager windowManager = (WindowManager) superToast.getContext()
+                        .getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
+                if (windowManager != null) {
+                    windowManager.addView(superToast.getView(), superToast.getWindowManagerParams());
+                }
 
-            // This will remove the SuperToast after a certain duration
-            sendDelayedMessage(superToast, Messages.REMOVE_SUPERTOAST,
-                    superToast.getDuration() + AnimationUtils.SHOW_DURATION);
+                // This will remove the SuperToast after a certain duration
+                sendDelayedMessage(superToast, Messages.REMOVE_SUPERTOAST,
+                        superToast.getDuration() + AnimationUtils.SHOW_DURATION);
+            }
+            catch (WindowManager.BadTokenException badTokenException)
+            {
+                cancelAllSuperToasts();
+            }
         }
     }
 
